@@ -1,0 +1,30 @@
+[Unit]
+Description=Homelab AI Assistant (Telegram + Discord)
+After=network-online.target ollama.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Đổi "john" thành user của bạn trên homelab
+User=john
+WorkingDirectory=/opt/homelab-assistant
+EnvironmentFile=/opt/homelab-assistant/.env
+ExecStart=/home/john/.bun/bin/bun run src/index.ts
+Restart=always
+RestartSec=5
+# Tự khởi động lại nếu treo quá lâu khi tắt
+TimeoutStopSec=20
+
+# Giới hạn tài nguyên để bot không ăn hết RAM của máy 8GB
+MemoryMax=600M
+CPUQuota=150%
+
+# Hardening nhẹ (vẫn cho phép đọc hệ thống để run_shell hữu ích)
+NoNewPrivileges=true
+PrivateTmp=true
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

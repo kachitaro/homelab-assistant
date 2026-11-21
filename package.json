@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "@ai-sdk/anthropic": "^4.0.107",
+    "@ai-sdk/google": "^4.0.124",
+    "@notionhq/client": "^5.31.1",
+    "ai": "^7.0.179",
+    "croner": "^11.0.1",
+    "discord.js": "^14.28.1",
+    "grammy": "^1.46.0",
+    "ollama-ai-provider-v2": "^4.1.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.5",
+    "typescript": "^7.0.2"
+  },
+  "name": "homelab-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "dev": "bun --watch run src/index.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit -p ."
+  }
+}
